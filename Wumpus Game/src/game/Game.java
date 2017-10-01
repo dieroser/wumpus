@@ -44,14 +44,14 @@ public class Game {
 			
 			//Bucle del juego
 			while(escenario[posxCaz][posyCaz].getCazador().isVivo()){
-				escenario[posxCaz][posyCaz].estadoCelda();			
+				escenario[posxCaz][posyCaz].estadoCelda();
 				opcionesCazador();
 				while(!esNumeroValido(Utilidades.recuperarValorNumerico(), "InGame")){
 					System.out.println("Opción no válida");
 				}
 				
 				if(numOpcion == 1){
-					avanzarCazador(escenario[posxCaz][posyCaz].getCazador().getDireccion());
+					avanzarCazador(escenario[posxCaz][posyCaz].getCazador().getDireccion());							
 					calcularColisiones();
 				}
 				else if(numOpcion == 2){
@@ -360,8 +360,12 @@ public class Game {
 	
 	private void calcularColisiones(){
 		if(escenario[posxCaz][posyCaz].getCazador().isEnCasilla() && 
-				(escenario[posxCaz][posyCaz].isWumpus() || escenario[posxCaz][posyCaz].isPozo())){
-			System.out.println("[INFO] Has muerto");
+				(escenario[posxCaz][posyCaz].isWumpus())){
+			System.out.println("[INFO] Has muerto por Wumpus");			
+			escenario[posxCaz][posyCaz].getCazador().setVivo(false);
+		}else if (escenario[posxCaz][posyCaz].getCazador().isEnCasilla() && 
+				escenario[posxCaz][posyCaz].isPozo()){
+			System.out.println("[INFO] Has caido por un Pozo");
 			escenario[posxCaz][posyCaz].getCazador().setVivo(false);
 		}
 		else if(escenario[posxCaz][posyCaz].getCazador().isEnCasilla() &&

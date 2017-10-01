@@ -35,16 +35,10 @@ public class Celda {
 		
 	}
 	
-	public void estadoCelda(){
-		if(wumpus){
-			System.out.println("[INFO] Ves a Wumpus");			
-		}
+	public void estadoCelda(){		
 		if(hedorWumpus){
 			System.out.println("[INFO] Hueles un hedor insoportable");
-		}
-		if(pozo){
-			System.out.println("[INFO] Caes por un pozo");
-		}
+		}		
 		if(brisaPozo){
 			System.out.println("[INFO] Sientes una brisa");
 		}
